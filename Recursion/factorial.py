@@ -6,9 +6,7 @@ factorial of an number by recursion
 def factorial(n):
     if n == 0:
         return 1
-    small = factorial(n - 1)
-    ans = n * small
-    return ans
+    return n * factorial(n-1)
 
 
 print(factorial(5))
