@@ -1,3 +1,6 @@
+import math
+#
+#
 def reverse_number(n):
     if n == 0:
         return
@@ -28,13 +31,25 @@ def reverse(n):
         reverse(n // 10)
 
 
-reverse(1234)
-print(summ)
+# reverse(1234)
+# print(summ)
 
 
-def reverse2(n):
-    """
-    sometimes you might need some additional variables in the argument in that case make another function
-    :return:
-    """
-    pass
+class Reverse:
+    def reverse2(self, n):
+        """
+        sometimes you might need some additional variables in the argument in that case make another function
+        :return:
+        """
+        digits = round(math.log10(n) + 1)
+        return self.helper(n, digits)
+
+    def helper(self, n, digits):
+        if n % 10 == n:
+            return n
+        rem = n % 10
+        return rem * round(math.pow(10, digits - 1)) + self.helper(n // 10, digits - 1)
+
+
+a = Reverse()
+print(a.reverse2(1234))
