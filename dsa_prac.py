@@ -32,16 +32,19 @@
 # print(l)
 
 
-def firstBadVersion(n):
-    start = 0
-    end = n
-    
-    while start <= end:
-        mid = (start + end)//2
-        bad = isBadVersion(mid) 
-        if bad:
-            return mid
-        elif not bad:
-            start = mid+1
-        else:
-            end = mid-1
+n = 3
+a = [11, 12, 13, 14, 15]
+
+
+def xor():
+    l = []
+    for i in a:
+        s = 0
+        for j in a:
+            element = i
+            s += element ^ j
+        l.append(s)
+    print(max(l))
+
+
+xor()

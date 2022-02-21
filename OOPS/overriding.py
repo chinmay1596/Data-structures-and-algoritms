@@ -9,4 +9,7 @@ class Circle(Shape):
 
 
 obj = Circle()
-print(type(obj))
+# obj.area()
+
+a = {'a':1, 'b':2}
+print(a)
