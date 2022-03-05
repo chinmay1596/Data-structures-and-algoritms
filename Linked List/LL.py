@@ -51,6 +51,18 @@ class LinkedList:
         temp.next = new_node
         self.size += 1
 
+    def insert_recursive(self, val, index):
+        self.head = self.insert_rec(val, index, self.head)
+
+    def insert_rec(self, val, index, node):
+        if index == 0:
+            new_node = Node(val, node)
+            self.size += 1
+            return new_node
+        index -= 1
+        node.next = self.insert_rec(val, index, node.next)
+        return node
+
     def get_node(self, index):
         temp = self.head
         for i in range(index):
@@ -80,10 +92,10 @@ class LinkedList:
         if index == 0:
             self.delete_first()
             return
-        if index == self.size-1:
+        if index == self.size - 1:
             self.delete_last()
             return
-        temp = self.get_node(index-1)
+        temp = self.get_node(index - 1)
         next_node = temp.next
         temp.next = temp.next.next
         next_node = None
@@ -91,15 +103,15 @@ class LinkedList:
 
 
 llist = LinkedList()
-llist.insert_first(8)
-llist.insert_first(7)
-llist.insert_first(6)
-llist.insert_first(5)
+llist.insert_first(3)
+llist.insert_first(3)
+llist.insert_first(2)
+llist.insert_first(1)
+llist.insert_first(1)
 llist.insert_last(9)
-llist.insert(100, 3)
+llist.insert_recursive(100, 3)
 llist.printlist()
-llist.delete(3)
-llist.printlist()
+
 # llist.append(4)
 # llist.append(5)
 # llist.append_after(2, 9)

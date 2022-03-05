@@ -23,6 +23,21 @@ class DoublyLinkedList:
         while temp:
             print(str(temp.data) + " <- ", end='')
             temp = temp.prev
+        print("START")
+
+    def insert_last(self, val):
+        new_node = Node(val)
+        new_node.next = None
+        if not self.head:
+            new_node.prev = None
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+        new_node.prev = last
+
 
     def insert_first(self, val):
         new_node = Node(val)
@@ -41,5 +56,5 @@ dll = DoublyLinkedList()
 dll.insert_first(1)
 dll.insert_first(2)
 dll.insert_first(3)
+dll.insert_last(100)
 dll.display()
-dll.display_rev()
