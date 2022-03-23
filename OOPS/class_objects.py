@@ -12,5 +12,4 @@ class Student:
 
 a = Student(14, 12, 'chinmay')
 b = Student(14, 12, 'chinmay')
-print(a.population)
-print(b.population)
+print(Student.population)

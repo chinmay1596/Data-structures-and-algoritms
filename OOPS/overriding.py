@@ -1,6 +1,7 @@
 class Shape(object):
-    def area(self):
-        print("This is area of Shape")
+    l = []
+    def area(self, data):
+        self.l.append(data)
 
 
 class Circle(Shape):
