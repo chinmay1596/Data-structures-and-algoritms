@@ -1,10 +1,11 @@
 class Node:
-    def __init__(self, data, next=None):
+    def __init__(self, data=0, next=None):
         self.data = data
         self.next = next
 
 
 class LinkedList:
+
     def __init__(self):
         self.head = None
         self.tail = None
@@ -101,18 +102,39 @@ class LinkedList:
         next_node = None
         self.size -= 1
 
+    def get_head(self):
+        return self.head
+
+    def reverse_recursive(self, node):
+        if node == self.tail:
+            self.head = self.tail
+            return
+
+        self.reverse_recursive(node.next)
+        self.tail.next = node
+        self.tail = node
+        self.tail.next = None
+
+    def reverse_iterative(self):
+        curr_node = self.head
+        prev_node = None
+        next_node = curr_node.next
+
+        while curr_node:
+            curr_node.next = prev_node
+            prev_node = curr_node
+            curr_node = next_node
+            if next_node:
+                next_node = next_node.next
+
+        self.head = prev_node
 
 llist = LinkedList()
-llist.insert_first(3)
+llist.insert_first(5)
+llist.insert_first(4)
 llist.insert_first(3)
 llist.insert_first(2)
 llist.insert_first(1)
-llist.insert_first(1)
-llist.insert_last(9)
-llist.insert_recursive(100, 3)
 llist.printlist()
-
-# llist.append(4)
-# llist.append(5)
-# llist.append_after(2, 9)
-# llist.printlist()
+llist.reverse_iterative()
+llist.printlist()

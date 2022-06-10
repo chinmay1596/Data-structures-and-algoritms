@@ -22,4 +22,7 @@ def max_sub():
     curr_sum = a[0]
     max_sum = a[0]
     for i in range(1, len(a)):
-        curr_sum = max(a[i], curr_sum+a[i])
+        curr_sum = max(a[i], curr_sum + a[i])
+        max_sum = max(curr_sum, max_sum)
+
+    return max_sum

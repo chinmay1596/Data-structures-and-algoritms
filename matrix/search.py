@@ -15,7 +15,7 @@ target = 37
 
 def matrix_sort():
     row = 0
-    col = len(matrix) - 1
+    col = len(matrix[0]) - 1
 
     while row < len(matrix) and col >= 0:
         if matrix[row][col] == target:
