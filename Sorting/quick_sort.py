@@ -13,20 +13,20 @@ def partition(arr, s, e):
 
     pivot = arr[s]
 
-    # count less elements than pivot for its right position in arr
+    # count elements smaller than pivot for its right position in arr
     count = 0
-    for k in range(s + 1, e+1):
+    for k in range(s + 1, e + 1):
         if arr[k] <= pivot:
             count += 1
 
-    pivotindex = s + count
+    pivot_index = s + count
 
     # swap karlo
-    arr[s], arr[pivotindex] = arr[pivotindex], arr[s]
+    arr[s], arr[pivot_index] = arr[pivot_index], arr[s]
 
     i = s
     j = e
-    while i < pivotindex and j > pivotindex:
+    while i < pivot_index and j > pivot_index:
 
         while arr[i] <= pivot:
             i += 1
@@ -34,16 +34,16 @@ def partition(arr, s, e):
         while arr[j] > pivot:
             j -= 1
 
-        if i < pivotindex and j > pivotindex:
+        if i < pivot_index and j > pivot_index:
             arr[i], arr[j] = arr[j], arr[i]
             i += 1
             j -= 1
 
-    return pivotindex
+    return pivot_index
 
 
 if __name__ == "__main__":
-    arr = [9, 9, 9]
+    arr = [5, 4, 3, 2, 1]
     n = len(arr)
 
     quicksort(arr, 0, n - 1)

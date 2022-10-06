@@ -1,8 +1,8 @@
-arr = [-4, -1, 3, 7, 10, 11]
-key = 12
+arr = [-1, 0, 3, 5, 9, 12]
+key = 2
 
 
-def binary_search():
+def binary_search_iterative():
     low = 0
     high = len(arr) - 1
 
@@ -19,7 +19,7 @@ def binary_search():
         return 'No element found'
 
 
-print(binary_search())
+# print(binary_search())
 
 
 def binary_search(arr, low, high):
@@ -30,7 +30,7 @@ def binary_search(arr, low, high):
     :param high:
     :return:
     """
-    if low > high:
+    if low >= high:
         return -1
     mid = (low + high) // 2
     if arr[mid] == key:

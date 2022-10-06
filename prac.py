@@ -1,47 +1,53 @@
-mat = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]
-target = [[1, 1, 1], [0, 1, 0], [0, 0, 0]]
+class MinStack:
 
+    def __init__(self):
+        self.item = []
+        self.mini = None
 
-class Solution:
-    new_mat = [[0] * len(mat) for _ in range(len(mat[0]))]
-    def rotate(self):
-        row = 0
-        col = 0
-
-        while row < len(mat):
-            Solution.new_mat[col][row] = mat[row][col]
-            col += 1
-
-            if col == len(mat[0]):
-                row += 1
-                col = 0
-
-        start = 0
-        end = len(Solution.new_mat) - 1
-        while start <= end:
-            for i in range(len(Solution.new_mat)):
-                Solution.new_mat[i][start], Solution.new_mat[i][end] = Solution.new_mat[i][end], Solution.new_mat[i][start]
-            start += 1
-            end -= 1
-        return Solution.new_mat
-
-    def check(self, new_mat, target):
-        for i in range(len(new_mat)):
-            for j in range(len(target)):
-                if new_mat[i][j] != target[i][j]:
-                    return False
+    def push(self, val: int) -> None:
+        if self.isEmpty():
+            self.item.append(val)
+            self.mini = val
         else:
-            return True
+            if val >= self.mini:
+                self.item.append(val)
+            else:
+                new_val = ((2 * val) - self.mini)
+                self.item.append(new_val)
+                self.mini = val
 
-    def rotation(self):
-        for i in range(4):
-            new_mat = self.rotate()
-            if self.check(new_mat, target):
-                return True
+    def pop(self) -> None:
+        if self.isEmpty():
+            return -1
+        top_ele = self.item[-1]
+        if top_ele > self.mini:
+            self.item.pop()
         else:
-            return False
+            self.mini = ((2 * self.mini) - top_ele)
+            self.item.pop()
 
+    def top(self) -> int:
+        if self.isEmpty():
+            return -1
+        top_ele = self.item[-1]
+        if top_ele >= self.mini:
+            return top_ele
+        else:
+            return self.mini
 
-a = Solution()
-# print(a.rotation())
+    def getMin(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.mini
 
+    def isEmpty(self):
+        return len(self.item) == 0
+
+obj = MinStack()
+obj.push(-2)
+obj.push(0)
+obj.push(-3)
+print(obj.getMin())
+obj.pop()
+print(obj.top())
+print(obj.getMin())
