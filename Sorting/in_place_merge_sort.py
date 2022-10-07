@@ -36,6 +36,6 @@ class InPlaceMegeSort:
 
 
 a = InPlaceMegeSort()
-arr = [5, 4, 3, 2, 1, 9, 8, 7, 5, 4, 9, 87, 45]
+arr = [10, 10]
 a.merge_sort(arr)
 print(arr)

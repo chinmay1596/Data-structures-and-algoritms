@@ -18,7 +18,7 @@ def partition(arr, s, e):
     for k in range(s + 1, e + 1):
         if arr[k] <= pivot:
             count += 1
-
+    # index of where to put our pivot on its correct position based on smaller elements count
     pivot_index = s + count
 
     # swap karlo
