@@ -6,7 +6,7 @@ def sum_n(n):
     else:
         return n + sum_n(n - 1)
 
-# print(sum_n(500))
+print(sum_n(2))
 
 
 def pow(n, p):

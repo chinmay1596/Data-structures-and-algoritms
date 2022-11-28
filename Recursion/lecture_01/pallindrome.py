@@ -22,4 +22,4 @@ def pallindrome(n):
     return n == reverse(n)
 
 
-print(pallindrome(1))
+print(pallindrome(10))

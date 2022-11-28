@@ -16,7 +16,7 @@ def zero_number(n):
 # print(zero_number(1000))
 
 # special pattern how to pass numbers to above call
-def zero(n, count=0):
+def zero(n, count):
     if n == 0:
         return count
     rem = n % 10
@@ -26,4 +26,4 @@ def zero(n, count=0):
 
 
 
-print(zero(3020004))
+print(zero(3020004, 0))
