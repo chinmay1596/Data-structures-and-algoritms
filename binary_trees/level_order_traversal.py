@@ -1,4 +1,4 @@
-from queue.queue import Queue
+from Queue.custom_queue import Queue
 from stacks.custom_stack import Stack
 
 
@@ -22,18 +22,18 @@ class BinaryTree:
     def levelorder_print(self, start):
         if start is None:
             return
-        queue = Queue()
-        queue.enqueue(start)
+        queue = []
+        queue.append(start)
 
         traversal = ""
         while len(queue) > 0:
-            traversal += str(queue.peek()) + "-"
-            node = queue.dequeue()
+            traversal += str(queue[0].data) + "-"
+            node = queue.pop(0)
 
             if node.left:
-                queue.enqueue(node.left)
+                queue.append(node.left)
             if node.right:
-                queue.enqueue(node.right)
+                queue.append(node.right)
         return traversal
 
     def reverse_level_order_print(self, start):
@@ -64,5 +64,4 @@ tree.root.right = Node(3)
 tree.root.left.left = Node(4)
 tree.root.left.right = Node(5)
 
-
-print(tree.print_tree('reverse_levelorder'))
+print(tree.print_tree('levelorder'))

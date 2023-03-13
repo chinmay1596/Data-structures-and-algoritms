@@ -1,5 +1,6 @@
 from stacks.custom_stack import Stack
 
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -17,7 +18,7 @@ class BinaryTree:
         elif traversal_type == 'inorder':
             return self.inorder_print(tree.root)
         elif traversal_type == 'postorder':
-            return self.postorder_print(tree.root, "")
+            return self.postorder_print_two_stack(tree.root)
 
     def preorder_print(self, root):
         """
@@ -41,8 +42,6 @@ class BinaryTree:
             if node.left:
                 stack.push(node.left)
         return traversal
-
-
 
     def inorder_print(self, root):
         """
@@ -68,14 +67,32 @@ class BinaryTree:
 
         return traversal
 
-    def postorder_print(self, start, traversal):
+    def postorder_print_two_stack(self, root):
         """
                 left -> right -> root
-                :param start:
-                :param traversal:
+                :param root:
                 :return:
                 """
+        if root is None:
+            return
+        stack1 = []
+        stack2 = []
 
+        stack1.append(root)
+        traversal = ""
+
+        while len(stack1) > 0:
+            node = stack1.pop()
+            stack2.append(node.data)
+
+            if node.left:
+                stack1.append(node.left)
+            if node.right:
+                stack1.append(node.right)
+
+        while len(stack2) > 0:
+            num = stack2.pop()
+            traversal += str(num) + '-'
         return traversal
 
 
@@ -85,5 +102,4 @@ tree.root.right = Node(3)
 tree.root.left.left = Node(4)
 tree.root.left.right = Node(5)
 
-
-print(tree.print_tree('inorder'))
+print(tree.print_tree('postorder'))

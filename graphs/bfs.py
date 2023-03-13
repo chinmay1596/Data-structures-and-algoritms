@@ -48,3 +48,28 @@ class Solution:
                 if self.check_for_cycle(adj_list, i, vis):
                     return True
         return False
+
+
+from typing import List
+from queue import Queue
+
+
+class Solution:
+    # Function to return Breadth First Traversal of given graph.
+    def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
+        visited_arr = [0] * V
+        visited_arr[0] = 1
+
+        q = Queue()
+        q.put(0)
+        bfs = []
+
+        while not q.empty():
+            node = q.get()
+            bfs.append(node)
+            for i in adj[node]:
+                if visited_arr[i] == 0:
+                    visited_arr[i] = 1
+                    q.put(i)
+        return bfs
+

@@ -117,17 +117,15 @@ class LinkedList:
 
     def reverse_iterative(self):
         curr_node = self.head
-        prev_node = None
-        next_node = curr_node.next
+        prev = None
 
         while curr_node:
-            curr_node.next = prev_node
-            prev_node = curr_node
-            curr_node = next_node
-            if next_node:
-                next_node = next_node.next
+            temp = curr_node.next
+            curr_node.next = prev
+            prev = curr_node
+            curr_node = temp
 
-        self.head = prev_node
+        return prev
 
 llist = LinkedList()
 llist.insert_first(5)

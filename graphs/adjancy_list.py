@@ -1,30 +1,23 @@
 class Graph:
-    graph_dict = {}
+    def __init__(self, n, m):
+        self.l = [[] for _ in range(n + 1)]
 
-    @classmethod
-    def add_edge(cls, u, v, direction):
-        # direction = 0 undirected
-        # direction = 1 directed graph
+    def add_edge_undirected(self, u, v):
+        self.l[u].append(v)
+        self.l[v].append(u)
 
-        # create an edge from u to v
-        if u in cls.graph_dict:
-            cls.graph_dict[u].append(v)
-        else:
-            cls.graph_dict[u] = [v]
-        if direction == 0:
-            if v in cls.graph_dict:
-                cls.graph_dict[v].append(u)
-            else:
-                cls.graph_dict[v] = [u]
+    def add_edge_directed(self, u, v):
+        self.l[u].append(v)
 
 
 if __name__ == '__main__':
-    obj = Graph()
 
     n = int(input("Enter the number of nodes"))
     m = int(input("Enter the number of edges"))
 
+    obj = Graph(n, m)
+
     for i in range(m):
         u, v = map(int, input().split())
-        obj.add_edge(u, v, 0)
-    print(obj.graph_dict)
+        obj.add_edge_undirected(u, v)
+    print(obj.l)

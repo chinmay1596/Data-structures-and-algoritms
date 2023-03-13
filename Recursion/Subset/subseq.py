@@ -34,5 +34,5 @@ class SubSequence:
         return l
 
 ob = SubSequence()
-print(ob.subseq_array(' ', 'abc'))
+print(ob.subseq_array(' ', 'aba'))
 

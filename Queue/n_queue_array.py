@@ -37,7 +37,7 @@ class NQueue:
 
     def dequeue(self, qn):
         if self.front[qn - 1] == -1:
-            print("queue is empty")
+            print("Queue is empty")
             return
 
         # find index to pop
