@@ -6,18 +6,18 @@ def max_arr(arr, index):
     return max(ans, rec)
 
 
-arr1 = []
-print(max_arr(arr1, 0))
+arr1 = [1, 2, 3, 4, 5]
+# print(max_arr(arr1, 0))
 
 
 def max_arr1(arr, index, maxi):
     if index == len(arr):
-        return
+        return maxi
     maxi = max(maxi, arr[index])
-    max_arr1(arr, index + 1, maxi)
+    return max_arr1(arr, index + 1, maxi)
 
 
 maxi = -1
-
-maxi = max_arr1(arr1, 0, maxi)
+arr = [1, 2, 3, 4, 5]
+maxi = max_arr1(arr, 0, maxi)
 print(maxi)

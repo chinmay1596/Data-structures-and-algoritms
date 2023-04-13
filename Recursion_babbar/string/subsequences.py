@@ -5,7 +5,10 @@ class Solution:
             ans.append(output)
             return ans
 
+        # include
         self.solve(t, index + 1, output + t[index])
+
+        #exclude
         self.solve(t, index + 1, output)
         return ans
 

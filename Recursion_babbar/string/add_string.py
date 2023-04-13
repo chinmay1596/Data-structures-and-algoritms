@@ -1,3 +1,8 @@
+"""
+add two strings
+"""
+
+
 def add_two_string(a, b, i, j, carry, ans):
     if i < 0 and j < 0 and carry == 0:
         return ans
@@ -18,7 +23,7 @@ def add_two_string(a, b, i, j, carry, ans):
 
 
 a = '20'
-b = '20'
+b = '29'
 ans = ''
 res = add_two_string(a, b, len(a) - 1, len(b) - 1, 0, ans)
 print(res[::-1])

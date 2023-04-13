@@ -9,7 +9,6 @@ s = 'babbar'
 print(''.join(reverse_string(list(s), 0, len(s) - 1)))
 
 
-
 def reverse_string1(s, index, ans):
     if index < 0:
         return ans

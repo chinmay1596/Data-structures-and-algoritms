@@ -89,4 +89,4 @@ class SubsetRecursive:
 
 
 obj = SubsetRecursive()
-print(obj.subset1([1, 2, 3]))
+print(obj.subset1([0, 0, 0]))
