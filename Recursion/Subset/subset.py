@@ -1,44 +1,6 @@
 from copy import copy, deepcopy
 
 
-class SubsetIterative:
-    sub = [1, 2, 3]
-    sub1 = [1, 2, 2]
-
-    @classmethod
-    def subset_array(cls):
-        arr = []
-        arr.append([])
-        for i in cls.sub:
-            internal_array = deepcopy(arr)
-            for j in range(len(internal_array)):
-                internal_array[j].append(i)
-            arr.extend(internal_array)
-
-        return arr
-
-    def duplicate_subset(self):
-        SubsetIterative.sub1.sort()
-        arr = []
-        arr.append([])
-        start = 0
-        end = 0
-        for i in range(len(SubsetIterative.sub1)):
-            internal_array = deepcopy(arr)
-            if i > 0 and SubsetIterative.sub1[i] == SubsetIterative.sub1[i - 1]:
-                start = end + 1
-                end = len(arr) - 1
-            else:
-                end = len(arr) - 1
-            for j in range(start, end + 1):
-                internal_array[j].append(SubsetIterative.sub1[i])
-            arr.extend(internal_array[start:end + 1])
-        return arr
-
-
-# obj = SubsetIterative()
-# print(obj.subset_array())
-
 
 class SubsetRecursive:
 
@@ -89,4 +51,5 @@ class SubsetRecursive:
 
 
 obj = SubsetRecursive()
-print(obj.subset1([0, 0, 0]))
+nums = [0, 0, 0]
+print(obj.subset(nums))

@@ -37,6 +37,14 @@ class LinkedList:
         self.tail.next = new_node
         self.tail = new_node
         return self.tail
+    
+    def find_length(self, head:Node):
+        temp = head
+        count = 0
+        while temp:
+            count+=1
+            temp = temp.next
+        return count
 
     def insert_at_position(self, pos, val):
         if not self.head:
@@ -47,121 +55,62 @@ class LinkedList:
         if pos == 0:
             self.insert_at_head(val)
             return
+        
+        length = self.find_length(self.head)
 
-        temp = self.head
-        count = 1
-        while count < pos:
-            temp = temp.next
-            count += 1
+        if pos >= length:
+            self.insert_at_tail(val)
+            return
 
+        prev = self.head
+        index = 1
+        while index < pos:
+            prev = prev.next
+            index += 1
+        curr = prev.next
+        new_node = Node(val)
+        prev.next = new_node
+        new_node.next = curr
 
+    def delete(self, pos):
+        if not self.head:
+            return "ll not present"
+        
+        if pos == 0:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+            del temp
+            return
 
-    # def insert_first(self, val):
-    #     new_node = Node(val)
-    #     # if we are creating first node then new_node.next = None because self.head initially is pointing to None
-    #     new_node.next = self.head
-    #     self.head = new_node
-    #     if not self.tail:  # if tail is at null
-    #         self.tail = self.head
-    #
-    #     self.size += 1
-    #
-    # def insert(self, val, index):
-    #     if index == 0:
-    #         self.insert_first(val)
-    #         return
-    #     if index == self.size:
-    #         self.insert_last(val)
-    #         return
-    #     temp = self.head
-    #     for i in range(1, index):
-    #         temp = temp.next
-    #
-    #     new_node = Node(val, temp.next)
-    #     temp.next = new_node
-    #     self.size += 1
-    #
-    # def insert_recursive(self, val, index):
-    #     self.head = self.insert_rec(val, index, self.head)
-    #
-    # def insert_rec(self, val, index, node):
-    #     if index == 0:
-    #         new_node = Node(val, node)
-    #         self.size += 1
-    #         return new_node
-    #     index -= 1
-    #     node.next = self.insert_rec(val, index, node.next)
-    #     return node
-    #
-    # def get_node(self, index):
-    #     temp = self.head
-    #     for i in range(index):
-    #         temp = temp.next
-    #     return temp
-    #
-    # def delete_last(self):
-    #     if self.size <= 1:
-    #         self.delete_first()
-    #         return
-    #     node = self.get_node(self.size - 2)
-    #     val = self.tail.data
-    #     self.tail = node
-    #     node.next = None
-    #     self.size -= 1
-    #     return val
-    #
-    # def delete_first(self):
-    #     val = self.head.data
-    #     self.head = self.head.next
-    #     if not self.head:
-    #         self.tail = None
-    #     self.size -= 1
-    #     return val
-    #
-    # def delete(self, index):
-    #     if index == 0:
-    #         self.delete_first()
-    #         return
-    #     if index == self.size - 1:
-    #         self.delete_last()
-    #         return
-    #     temp = self.get_node(index - 1)
-    #     next_node = temp.next
-    #     temp.next = temp.next.next
-    #     next_node = None
-    #     self.size -= 1
-    #
-    # def get_head(self):
-    #     return self.head
-    #
-    # def reverse_recursive(self, node):
-    #     if node == self.tail:
-    #         self.head = self.tail
-    #         return
-    #
-    #     self.reverse_recursive(node.next)
-    #     self.tail.next = node
-    #     self.tail = node
-    #     self.tail.next = None
-    #
-    # def reverse_iterative(self):
-    #     curr_node = self.head
-    #     prev = None
-    #
-    #     while curr_node:
-    #         temp = curr_node.next
-    #         curr_node.next = prev
-    #         prev = curr_node
-    #         curr_node = temp
-    #
-    #     return prev
+        length = self.find_length(self.head)
+
+        if pos > length-1:
+            print("Invalid position")
+            return
+
+        prev = self.head
+        index = 1
+        while index < pos:
+            prev = prev.next
+            index+=1
+        
+        curr = prev.next
+        prev.next = curr.next
+        curr.next = None
+        del curr
+
+        
+
+    
 
 
 llist = LinkedList()
-llist.insert_at_head(2)
 llist.insert_at_head(1)
-llist.insert_at_tail(1)
 llist.insert_at_tail(2)
 llist.insert_at_tail(3)
+llist.insert_at_tail(4)
+llist.insert_at_tail(5)
+llist.delete(5)
 
 llist.printlist()

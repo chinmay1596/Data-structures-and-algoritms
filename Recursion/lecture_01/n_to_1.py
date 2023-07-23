@@ -15,7 +15,7 @@ def _1_to_n(n):
     print(n)
 
 
-_1_to_n(5)
+# _1_to_n(5)
 
 
 def funboth(n):
