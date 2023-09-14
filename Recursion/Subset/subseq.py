@@ -60,5 +60,5 @@ class Subsequence:
 
 
 obj = Subsequence()
-nums = "abc"
+nums = "eeg"
 print(obj.subseq(nums))
