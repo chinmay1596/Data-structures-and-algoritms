@@ -20,5 +20,5 @@ class Solution():
 
 
 obj = Solution()
-s = "((a+b))"
+s = "(a+b)"
 print(obj.checkRedundancy(s))

@@ -100,7 +100,6 @@ class LinkedList:
         curr.next = None
         del curr
 
-        
 
     
 
@@ -108,9 +107,11 @@ class LinkedList:
 llist = LinkedList()
 llist.insert_at_head(1)
 llist.insert_at_tail(2)
-llist.insert_at_tail(3)
-llist.insert_at_tail(4)
-llist.insert_at_tail(5)
-llist.delete(5)
+llist.insert_at_tail(2)
+llist.insert_at_tail(1)
+llist.insert_at_tail(2)
+llist.insert_at_tail(0)
+llist.insert_at_tail(2)
+llist.insert_at_tail(2)
 
 llist.printlist()
